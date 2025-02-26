@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Card Layout</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 20px;
+            background-color: #e1eec3;
+        }
+        h2{
+            text-align: center;
+            font-size: 2rem;
+            color: #231651;
+        }
+        p{
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        .title{
+            text-align: center;
+            color: #f05053;
+        }
+        .container{
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .cards{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .card{
+            padding: 20px;
+            border: 2px solid #14281d;
+            border-radius: 10px;
+            box-shadow: 0px 0px 12px grey;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        .card img{
+            width: 100%;
+            object-fit: contain;
+            height: 180px;
+            mix-blend-mode: color-burn;
+        }
+        .card:hover{
+            transform: translateY(-10px);
+            box-shadow: 0px 0px 20px grey;
+        }
+        button{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            margin-top: auto;
+            width: 6rem;
+            height: 30px;
+            border: 1px solid #a31621;
+            border-radius: 5px;
+            background-color: #eaecc6;
+            color: #14281d;
+        }
+        button:hover{
+            background-color: #14281d;
+            cursor: pointer;
+            color: #fff;
+        }
+        .closeBtn{
+            color: #a31621;
+            float: right;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        .closeBtn:hover,
+        .closeBtn:focus{
+            cursor: pointer;
+            color: #f87060;
+        }
+        .container-info{
+            max-width: 900px;
+            margin: 0 auto;
+            border: 1px solid #14281d;
+            border-radius: 10px;
+            padding: 20px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            z-index: 1000;
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 999;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Responsive Card Layout</h2>
+        <div class="cards">
+            <div class="card">
+                <img src="html.jpeg">
+                <h3 class="title">HTML</h3>
+                <hr>
+                <p>
+                    HTML is the standard markup language for creating web pages.<br>
+                    It sets the layout of a web page, just like a house design in construction.<br> 
+                    HTML describes the structure of a website, making it a markup language rather than a programming language.
+                </p>
+                <button onclick="view()">View More</button>
+            </div>
+            <div class="card">
+                <img src="css.png">
+                <h3 class="title">CSS</h3>
+                <hr>
+                <p>
+                    Css is a language that describes the style of an HTML document. <br>
+                    It describes how HTML elements should be displayed on the screen, in print, or in other media. <br>
+                    It's like painting or decorating a newly constructed house in construction, making it look beautiful.
+                </p>
+                <button onclick="view()">View More</button>
+            </div>
+            <div class="card">
+                <img src="javascript.png">
+                <h3 class="title">JavaScript</h3>
+                <hr>
+                <p>
+                    JavaScript is a programming language that enables you to create dynamically updating content, control multimedia, animate images, and much more. <br>
+                    It adds functionality to the web page, just like adding electricity, and water, to a newly constructed house.
+                </p>
+                <button onclick="view()">View More</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay"></div>
+    <div class="container-info" style="display: none;">
+        <span class="closeBtn">&times;</span>
+        <div class="more" id="more-info">
+            <div class="info">
+                <h3 class="title">HTML</h3>
+                <p>
+                    Hyper Text Markup Language is a very simple markup language to learn and use. <br>
+                    Through it, we can easily learn how to add various elements to our web pages. for example adding images, videos, links, and many more. <br>
+                    It si the first step in creating websites. <br>
+                    You can learn more on HTML through the following link <a href="https://www.w3schools.com/html/" target="_blank">Learn html</a>
+                </p>
+                <br>
+                <hr>
+                <br>
+                <h3 class="title">CSS</h3>
+                <p>
+                    Cascading Style Sheets is a style sheet language used for describing the presentation of a document written in a markup language like HTML. <br>
+                    CSS is a cornerstone technology of the world wide web, alongside HTML and JavaScript. <br>
+                    You can learn more on CSS through the following link <a href="https://www.w3schools.com/css/" target="_blank">Learn CSS</a>
+                </p>
+                <br>
+                <hr>
+                <br>
+                <h3 class="title">JavaScript</h3>
+                <p>
+                    JavaScript is a text-based programming language used both on the client-side and server-side that allows you to make web pages interactive. <br>
+                    Where HTML and CSS give structure and style to web pages, JavaScript adds functionality to the web pages.
+                    You can learn more on JavaScript through the following link <a href="https://www.w3schools.com/js/" target="_blank">Learn JavaScript</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function view() {
+            document.querySelector('.container-info').style.display = 'block';
+            document.querySelector('.overlay').style.display = 'block';
+        }
+
+        document.querySelector('.closeBtn').addEventListener('click', function() {
+            document.querySelector('.container-info').style.display = 'none';
+            document.querySelector('.overlay').style.display = 'none';
+        });
+    </script>
+</body>
+</html>
